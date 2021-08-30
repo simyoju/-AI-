@@ -21,6 +21,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         updateImageName()
         
+        pageControl.numberOfPages = images.count
+        
     }
 
     @IBAction func showPrevImage(_ sender: Any) {
@@ -28,6 +30,8 @@ class ViewController: UIViewController {
         if curImage < 0 {
             curImage = 0
         }
+        
+        pageControl.currentPage = curImage
         
         updateImageName()
         
@@ -41,6 +45,7 @@ class ViewController: UIViewController {
             curImage = images.count-1
         }
         
+        pageControl.currentPage = curImage
         updateImageName()
     }
     
