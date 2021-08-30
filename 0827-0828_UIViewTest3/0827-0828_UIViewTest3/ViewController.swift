@@ -11,6 +11,8 @@ class ViewController: UIViewController {
     
     let images = ["daeng1", "daeng2", "daeng3", "daeng4", "daeng5"]
     var curImage = 0
+    // 강사님 코드 보고 생성한 변수
+//    var imageName = images[self().curImage]
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -22,28 +24,26 @@ class ViewController: UIViewController {
     }
 
     @IBAction func showPrevImage(_ sender: Any) {
-        if curImage != 0 {
-            curImage -= 1
-            imageView.image = UIImage(named: images[curImage])
-            pageControl.currentPage += 1
-        } else {
-            return
+        let imageName = images[curImage]
+        curImage -= 1
+        
+        if curImage < 0 {
+            curImage = 0
         }
         
+        imageView.image = UIImage(named: imageName)
     }
     
     @IBAction func showNextImage(_ sender: Any) {
+        let imageName = images[curImage]
+        curImage += 1
+        
         // fix error
-        if curImage > images.count-1{
+        if curImage > images.count-1 {
             curImage = images.count-1
-        } else{
-            // 강사님 코드 보고 수정한 부분
-            let imageName = images[curImage]
-            
-            curImage += 1
-            imageView.image = UIImage(named: imageName)
-
         }
+        
+        imageView.image = UIImage(named: imageName)
     }
     
 }
