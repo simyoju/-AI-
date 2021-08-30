@@ -33,15 +33,16 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showNextImage(_ sender: Any) {
-        if curImage != images.count{
+        // fix error
+        if curImage > images.count-1{
+            curImage = images.count-1
+        } else{
             // 강사님 코드 보고 수정한 부분
             let imageName = images[curImage]
             
             curImage += 1
             imageView.image = UIImage(named: imageName)
-            
-        } else{
-            return
+
         }
     }
     
