@@ -10,8 +10,10 @@ import UIKit
 class ViewController: UIViewController {
     
 //    let dataSource = PickerViewDataSource()
+    let omg = ["효정", "미미", "유아", "승희", "비니", "지호", "아린"]
     
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +32,15 @@ extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 4
+        return omg.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(row)번째 row"
+        
+        return omg[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        label.text = omg[row]
     }
 }
