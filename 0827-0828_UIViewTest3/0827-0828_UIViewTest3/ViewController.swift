@@ -19,23 +19,21 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.image = UIImage(named: images[curImage])
+        updateImageName()
         
     }
 
     @IBAction func showPrevImage(_ sender: Any) {
-        let imageName = images[curImage]
         curImage -= 1
-        
         if curImage < 0 {
             curImage = 0
         }
         
-        imageView.image = UIImage(named: imageName)
+        updateImageName()
+        
     }
     
     @IBAction func showNextImage(_ sender: Any) {
-        let imageName = images[curImage]
         curImage += 1
         
         // fix error
@@ -43,6 +41,11 @@ class ViewController: UIViewController {
             curImage = images.count-1
         }
         
+        updateImageName()
+    }
+    
+    func updateImageName(){
+        let imageName = images[curImage]
         imageView.image = UIImage(named: imageName)
     }
     
